@@ -40,6 +40,7 @@ public class Home2Activity extends AppCompatActivity
         OnMapReadyCallback,
         PlacesListener {
 
+    String loginID;
     private GoogleMap mMap;
     private   AlertDialog dialog;
     List<Marker> previous_marker = null;
@@ -48,6 +49,9 @@ public class Home2Activity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home2);
+
+        Intent intent = getIntent();
+        loginID = intent.getExtras().getString("loginID");
 
         previous_marker = new ArrayList<Marker>();
 
@@ -162,7 +166,7 @@ public class Home2Activity extends AppCompatActivity
                 .key("AIzaSyD16rYhUbrean9eF_eQ082rnYL6L6cCCrA")
                 .latlng(37.2848145, 127.0118573)
                 .radius(500) //500 미터 내에서 검색
-                .type(PlaceType.CAFE) //음식점
+                .type(PlaceType.CAFE) //카페
                 .build()
                 .execute();
 
@@ -202,6 +206,7 @@ public class Home2Activity extends AppCompatActivity
 
             case R.id.action_search2:
                 Intent intent2 = new Intent(Home2Activity.this, InformationActivity.class);
+                intent2.putExtra("loginID", loginID);
                 Home2Activity.this.startActivity(intent2);
         }
         return true;

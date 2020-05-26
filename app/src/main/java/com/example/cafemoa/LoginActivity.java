@@ -236,6 +236,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(LoginActivity.this, Home2Activity.class);
+                                intent.putExtra("loginID", mEditTextID.getText().toString());
                                 startActivity(intent);
                             }
                         })

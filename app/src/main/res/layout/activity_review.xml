@@ -14,10 +14,10 @@
     </TextView>
 
     <EditText
-        android:id="@+id/nameEdit"
+        android:id="@+id/titleEdit"
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
-        android:hint="이름"
+        android:hint="제목"
         android:layout_height="50dp"
         android:lines="8"
         android:minLines="5"
@@ -78,4 +78,8 @@
         </Button>
 
     </LinearLayout>
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:id="@+id/textView_result" />
 </LinearLayout>

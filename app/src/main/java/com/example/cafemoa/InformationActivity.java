@@ -36,6 +36,8 @@ import java.util.HashMap;
 
 public class InformationActivity extends AppCompatActivity {
 
+    String loginID;
+
     private static String TAG = "phpinfo";
 
     private static final String TAG_JSON="user";
@@ -58,6 +60,9 @@ public class InformationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Intent intent = getIntent();
+        loginID = intent.getExtras().getString("loginID");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
@@ -85,14 +90,14 @@ public void onClick(View v) {
         mArrayList = new ArrayList<>();
 
         seatsButton.setOnClickListener( new View.OnClickListener() {
-@Override
-public void onClick(View view) {
-        Intent intent = new Intent( InformationActivity.this, SeatsActivity.class );
-        intent.putExtra("name", mEditTextSearchKeyword1.getText().toString());
-        startActivity(intent);
-        }
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( InformationActivity.this, SeatsActivity.class );
+                intent.putExtra("name", mEditTextSearchKeyword1.getText().toString());
+                startActivity(intent);
+            }
         });
-        }
+    }
 
 
 private class GetData extends AsyncTask<String, Void, String>{
@@ -263,10 +268,14 @@ private class GetData extends AsyncTask<String, Void, String>{
         switch (item.getItemId()){
             case R.id.writeReview:
                 Intent intent =new Intent(InformationActivity.this,ReviewActivity.class);
+                intent.putExtra("name", mEditTextSearchKeyword1.getText().toString());
+                intent.putExtra("loginID", loginID);
                 InformationActivity.this.startActivity(intent);
                 break;
             case R.id.seeReview:
                 Intent intent1=new Intent(InformationActivity.this,Review2Activity.class);
+                intent1.putExtra("name", mEditTextSearchKeyword1.getText().toString());
+                intent1.putExtra("loginID", loginID);
                 InformationActivity.this.startActivity(intent1);
                 break;
 

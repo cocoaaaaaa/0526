@@ -10,7 +10,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -23,10 +22,10 @@ import java.net.URL;
 public class SeatsActivity extends AppCompatActivity {
     String name;
     TextView mTextViewResult;
-    EditText seatsCount = null;
+    TextView seatsCount = null;
     Button seatsUp = null;
     Button seatsDown = null;
-    int count ;
+    int count = 0;
 
     private static String IP_ADDRESS = "203.237.179.120:7003";
     private static String TAG = "phpseats";
@@ -159,22 +158,20 @@ public class SeatsActivity extends AppCompatActivity {
         Button seatsUp = (Button) findViewById(R.id.seatsUp);
         Button seatsDown = (Button) findViewById(R.id.seatsDown);
         Button seatsinitial =(Button)findViewById(R.id.seatsinitial);
-        final EditText seatsCount = (EditText) findViewById(R.id.seatsCount);
+        final TextView seatsCount = (TextView) findViewById(R.id.seatsCount);
 
         seatsUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer i = Integer.parseInt( "" + seatsCount.getText() );
-                i++;
-                seatsCount.setText("" + i);
+                count++;
+                seatsCount.setText("" + count);
             }
         });
         seatsDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer i = Integer.parseInt( "" + seatsCount.getText() );
-                i--;
-                seatsCount.setText("" + i);
+                count--;
+                seatsCount.setText("" + count);
             }
         });
 
@@ -186,7 +183,6 @@ public class SeatsActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 }

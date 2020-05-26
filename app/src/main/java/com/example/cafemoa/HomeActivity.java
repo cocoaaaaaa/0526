@@ -164,7 +164,7 @@ public class HomeActivity extends AppCompatActivity
                 .key("AIzaSyD16rYhUbrean9eF_eQ082rnYL6L6cCCrA")
                 .latlng(37.2848145,127.0118573)
                 .radius(500) //500 미터 내에서 검색
-                .type(PlaceType.CAFE) //음식점
+                .type(PlaceType.CAFE) //카페
                 .build()
                 .execute();
 
