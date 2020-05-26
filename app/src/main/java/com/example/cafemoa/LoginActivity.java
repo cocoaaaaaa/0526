@@ -2,9 +2,12 @@ package com.example.cafemoa;
 
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.InputType;
@@ -53,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEditTextID, mEditTextPass;
     Button btn_login, btn_register;
     private String mJsonString;
-
+    private   AlertDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -225,6 +228,23 @@ public class LoginActivity extends AppCompatActivity {
                 hashMap.put(TAG_SORT, userSort);
 
                 mArrayList.add(hashMap);
+
+                Intent intent = new Intent(LoginActivity.this, Home2Activity.class);
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                dialog = builder.setMessage("로그인되었습니다.")
+                        .setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(LoginActivity.this, Home2Activity.class);
+                                startActivity(intent);
+                            }
+                        })
+
+                        .create();
+                dialog.show();
+
+
+                return;
             }
 
 

@@ -265,7 +265,10 @@ private class GetData extends AsyncTask<String, Void, String>{
                 Intent intent =new Intent(InformationActivity.this,ReviewActivity.class);
                 InformationActivity.this.startActivity(intent);
                 break;
-
+            case R.id.seeReview:
+                Intent intent1=new Intent(InformationActivity.this,Review2Activity.class);
+                InformationActivity.this.startActivity(intent1);
+                break;
 
         }
         return  true;

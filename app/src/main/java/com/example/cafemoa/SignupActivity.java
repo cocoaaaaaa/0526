@@ -1,8 +1,12 @@
 package com.example.cafemoa;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.InputType;
@@ -12,8 +16,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.example.cafemoa.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 
@@ -36,7 +47,8 @@ public class SignupActivity extends AppCompatActivity {
     private EditText mEditTextPhone;
     private EditText mEditTextSort;
     private TextView mTextViewResult;
-
+    private boolean validate=false;
+    private   AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,8 +115,29 @@ public class SignupActivity extends AppCompatActivity {
             progressDialog.dismiss();
             mTextViewResult.setText(result);
             Log.d(TAG, "POST response  - " + result);
-        }
 
+          /* if (result == "success") {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                dialog = builder.setMessage("축하합니다.회원가입에 성공하셨습니다!")
+                        .setCancelable(false)
+                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                                SignupActivity.this.startActivity(intent);
+                            }
+                        })
+
+
+                        .create();
+                dialog.show();
+
+            }
+
+
+            }
+        */
+        }
 
         @Override
         protected String doInBackground(String... params) {
@@ -171,7 +204,11 @@ public class SignupActivity extends AppCompatActivity {
 
                 Log.d(TAG, "InsertData: Error ", e);
 
+
+
                 return new String("Error: " + e.getMessage());
+
+
             }
 
         }

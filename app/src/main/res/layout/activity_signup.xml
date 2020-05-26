@@ -81,19 +81,35 @@
 
         ></EditText>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="가입하기"
+        android:gravity="center"
+        android:layout_weight="5"
         android:layout_marginBottom="16dp"
         >
 
     </Button>
-
+    <Button
+        android:id="@id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="5"
+        android:text="로그인"></Button>
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/textView_result" />
 
-    ></LinearLayout>
+    >
+    </LinearLayout>
